@@ -1,0 +1,31 @@
+﻿<Window x:Class="MainApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainApp"
+        mc:Ignorable="d"
+        Icon="images/orange.png"
+        WindowStartupLocation="CenterScreen"
+        Title="程序员的个人知识库" Height="450" Width="800" Initialized="Window_Initialized">
+    <Grid>
+        <DockPanel Margin="10" LastChildFill="True">
+            <DockPanel DockPanel.Dock="Top" Background="White">
+                <TextBox x:Name="textSearch" Margin="0,5,0,5" Height="28" DockPanel.Dock="Left" Width="600" FontSize="16" TextChanged="textSearch_TextChanged"></TextBox>
+                <DockPanel DockPanel.Dock="Right" Margin="0,5,0,5">
+                    <Button x:Name="btnAdd" Margin="10,0,0,0" DockPanel.Dock="Right" Click="btnAdd_Click">添加</Button>
+                </DockPanel>
+            </DockPanel>
+            <Label DockPanel.Dock="Bottom"  Background="White">Copyright ©2018 做全栈攻城狮</Label>
+            <ListView x:Name="listResult" FontSize="14" MouseDoubleClick="listResult_MouseDoubleClick">
+                <ListView.View>
+                    <GridView x:Name="gridView1">
+                        <GridViewColumn Header="id" Width="30" DisplayMemberBinding="{Binding Path=id}"></GridViewColumn>
+                        <GridViewColumn Header="title" Width="80" DisplayMemberBinding="{Binding Path=title}"></GridViewColumn>
+                        <GridViewColumn Header="content" Width="530" DisplayMemberBinding="{Binding Path=content}"></GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
