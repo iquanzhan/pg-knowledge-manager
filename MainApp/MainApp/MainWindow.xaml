@@ -20,9 +20,9 @@
             <ListView x:Name="listResult" FontSize="14" MouseDoubleClick="listResult_MouseDoubleClick">
                 <ListView.View>
                     <GridView x:Name="gridView1">
-                        <GridViewColumn Header="id" Width="30" DisplayMemberBinding="{Binding Path=id}"></GridViewColumn>
-                        <GridViewColumn Header="title" Width="80" DisplayMemberBinding="{Binding Path=title}"></GridViewColumn>
-                        <GridViewColumn Header="content" Width="530" DisplayMemberBinding="{Binding Path=content}"></GridViewColumn>
+                        <GridViewColumn Header="序号" Width="30" DisplayMemberBinding="{Binding Path=id}"></GridViewColumn>
+                        <GridViewColumn Header="标题" Width="80" DisplayMemberBinding="{Binding Path=title}"></GridViewColumn>
+                        <GridViewColumn Header="内容" Width="530" DisplayMemberBinding="{Binding Path=content}"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -13,7 +13,10 @@
             <DockPanel DockPanel.Dock="Top" Background="White">
                 <Label x:Name="textTitle" Margin="0,5,0,5" Height="28" DockPanel.Dock="Left" FontSize="16"></Label>
             </DockPanel>
-            <Label DockPanel.Dock="Bottom"  Background="White">Copyright ©2018 做全栈攻城狮</Label>
+            <DockPanel DockPanel.Dock="Bottom"  Background="White">
+                <Label DockPanel.Dock="Left">Copyright ©2018 做全栈攻城狮</Label>
+                <Button x:Name="btnUpdate" DockPanel.Dock="Right" Width="50" HorizontalAlignment="Right" Margin="0,0,10,0" Click="btnUpdate_Click">更新</Button>
+            </DockPanel>
             <TextBox x:Name="textContent" TextWrapping="Wrap"></TextBox>
         </DockPanel>
     </Grid>

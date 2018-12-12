@@ -24,6 +24,9 @@ G:\github\pg-knowledge-manager\MainApp\MainApp\bin\Debug\System.Data.SQLite.dll.
 G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\MainApp.csproj.CopyComplete
 G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\AddWindow.g.cs
 G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\AddWindow.baml
-G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\MainApp.csprojAssemblyReference.cache
 G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\ShowWindow.g.cs
 G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\ShowWindow.baml
+G:\github\pg-knowledge-manager\MainApp\MainApp\bin\Debug\MainApp.exe.manifest
+G:\github\pg-knowledge-manager\MainApp\MainApp\bin\Debug\MainApp.application
+G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\MainApp.exe.manifest
+G:\github\pg-knowledge-manager\MainApp\MainApp\obj\Debug\MainApp.application

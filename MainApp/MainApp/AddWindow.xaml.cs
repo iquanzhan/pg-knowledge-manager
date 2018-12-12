@@ -37,6 +37,9 @@ namespace MainApp
             };
 
             SqlHelper.ExecuteNonQuery(sql, System.Data.CommandType.Text, param);
+
+            //关闭对话框
+            this.Close();
         }
     }
 }
