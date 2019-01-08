@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {NavLink} from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import './index.less';
-
 import { Menu } from "antd";
 import MenuConfig from "../../config/menuConfig";
+import AppLogo from "../../images/navLeft/logo.png";
 
 const SubMenu = Menu.SubMenu;
 
@@ -32,7 +31,7 @@ class Index extends Component {
                 );
             }
             return <Menu.Item key={item.key}>
-            <NavLink to={item.key}>{item.title}</NavLink>
+                <NavLink to={item.key}>{item.title}</NavLink>
             </Menu.Item>;
         });
 
@@ -42,8 +41,8 @@ class Index extends Component {
         return (
             <div>
                 <div className="logo">
-                    <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="ant design" />
-                    <h1>Ant Design Samples</h1>
+                    <img src={AppLogo} width="34" alt="ant design" />
+                    <h1>知识管理系统</h1>
                 </div>
                 <Menu theme="dark">
                     {this.state.menuTreeNode}
