@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/orange.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bitbug_favicon.ico")]
 
 

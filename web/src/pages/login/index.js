@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-
-class App extends Component {
+import './index.less';
+class index extends Component {
     render() {
         return (
             <div>
-                {this.props.children}
+                This is Login Page
             </div>
         );
     }
 }
 
-export default App;
+export default index;

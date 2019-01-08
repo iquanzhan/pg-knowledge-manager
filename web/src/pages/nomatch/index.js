@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-
-class App extends Component {
+import './index.less';
+class Index extends Component {
     render() {
         return (
             <div>
-                {this.props.children}
+                404 Not Found！
             </div>
         );
     }
 }
 
-export default App;
+export default Index;
