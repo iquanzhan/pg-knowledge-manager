@@ -1,8 +1,6 @@
 import JsonP from 'jsonp';
-
-/**
- * JsonP工具类
- */
+import axios from "axios";
+import { Modal } from 'antd';
 export default class Axios {
     static jsonp(options) {
         return new Promise((resolve, reject) => {
@@ -17,4 +15,45 @@ export default class Axios {
             })
         });
     }
+
+    static ajax(options) {
+        let loading;
+        if (options.data && options.data.isShowLoading !== false) {
+            loading = document.getElementById("ajaxLoading");
+            loading.style.display = 'block';
+        }
+
+        let baseUrl = "https://easy-mock.com/mock/5c17a07740c07229aa2e6022/api";
+
+        return new Promise((resolve, reject) => {
+            axios({
+                url: options.url,
+                method: 'get',
+                baseURL: baseUrl,
+                timeout: 5000,
+                params: (options.data && options.data.params) || ''
+            }).then((response) => {
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+                if (response.status === 200) {
+                    let res = response.data;
+                    if (res.code === 0) {
+                        resolve(res);
+                    }
+                    else {
+                        Modal.info({
+                            title: "提示",
+                            content: res.msg
+                        })
+                    }
+                }
+                else {
+                    reject(response.data);
+                }
+            })
+        });
+
+    }
 }
+
