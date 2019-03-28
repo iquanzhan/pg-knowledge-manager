@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Row, Col, List,Tag } from 'antd';
+import { Input, Row, Col, List, Tag } from 'antd';
 
 import "./index.less";
 
@@ -9,7 +9,7 @@ class Index extends Component {
     render() {
 
         const listData = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 200; i++) {
             listData.push({
                 href: 'http://ant.design',
                 title: `ant design part ${i}`,
@@ -20,19 +20,27 @@ class Index extends Component {
         }
 
         return (
-            <div className="container">
+            <div>
+                <div className="header">
+                    <Row>
+                        <Col span={10} offset={2}>
+                            <SearchInput />
+                        </Col>
+                    </Row>
+                </div>
+
                 <Row>
-                    <Col span={10} offset={7}>
-                        <SearchInput />
-                    </Col>
-                </Row>
-                <Row style={{marginTop:50}}>
-                    <Col span={12} offset={6}>
+                    <Col span={10} offset={2}>
                         <List
-                            bordered
                             itemLayout="vertical"
                             size="large"
                             dataSource={listData}
+                            pagination={{
+                                onChange: (page) => {
+                                    console.log(page);
+                                },
+                                pageSize: 10,
+                            }}
                             renderItem={item => (
                                 <List.Item
                                     key={item.title}
@@ -41,11 +49,11 @@ class Index extends Component {
                                         title={<a href={item.href}>{item.title}</a>}
                                         description={
                                             <span>
-                                              <Tag>Ant Design</Tag>
-                                              <Tag>设计语言</Tag>
-                                              <Tag>蚂蚁金服</Tag>
+                                                <Tag>Ant Design</Tag>
+                                                <Tag>设计语言</Tag>
+                                                <Tag>蚂蚁金服</Tag>
                                             </span>
-                                          }
+                                        }
                                     />
                                     {item.content}
                                 </List.Item>
@@ -72,7 +80,7 @@ class SearchInput extends Component {
                 placeholder="请搜索..."
                 onSearch={this.search}
                 enterButton="搜索"
-                size="large"
+                size="normal"
             />
         );
     }

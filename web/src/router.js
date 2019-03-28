@@ -4,6 +4,9 @@ import App from "./App";
 import NoMatch from "./pages/nomatch";
 import Login from "./pages/login";
 import Home from "./pages/home";
+import Search from "./pages/search";
+import Article from "./pages/article";
+import RichText from "./pages/richtext";
 
 
 class Router extends Component {
@@ -15,6 +18,9 @@ class Router extends Component {
                         <Redirect exact path="/" to="/index" />
                         <Route path="/login" component={Login} />
                         <Route path="/index" component={Home} />
+                        <Route path="/search" component={Search} />
+                        <Route path="/article" component={Article} />
+                        <Route path="/richtext" component={RichText} />
                         <Route component={NoMatch}></Route>
                     </Switch>
                 </App>
