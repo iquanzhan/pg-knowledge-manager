@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: learn-base
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/learn_base?characterEncoding=utf-8
+    username: learn_base
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
