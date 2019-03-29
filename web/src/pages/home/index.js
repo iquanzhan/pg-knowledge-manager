@@ -1,81 +1,93 @@
 import React, { Component } from 'react';
-import { Input, Row, Col, List,Tag } from 'antd';
-
+import { Input, Row, Col, List, Typography } from 'antd';
+import { Link } from 'react-router-dom';
+import axios from './../../utils/Axios';
+import Home from './../index';
 import "./index.less";
 
 const Search = Input.Search;
+const { Paragraph } = Typography;
 
 class Index extends Component {
-    render() {
 
-        const listData = [];
-        for (let i = 0; i < 5; i++) {
-            listData.push({
-                href: 'http://ant.design',
-                title: `ant design part ${i}`,
-                avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-            });
-        }
-
-        return (
-            <div className="container">
-                <Row>
-                    <Col span={10} offset={7}>
-                        <SearchInput />
-                    </Col>
-                </Row>
-                <Row style={{marginTop:50}}>
-                    <Col span={12} offset={6}>
-                        <List
-                            bordered
-                            itemLayout="vertical"
-                            size="large"
-                            dataSource={listData}
-                            renderItem={item => (
-                                <List.Item
-                                    key={item.title}
-                                >
-                                    <List.Item.Meta
-                                        title={<a href={item.href}>{item.title}</a>}
-                                        description={
-                                            <span>
-                                              <Tag>Ant Design</Tag>
-                                              <Tag>设计语言</Tag>
-                                              <Tag>蚂蚁金服</Tag>
-                                            </span>
-                                          }
-                                    />
-                                    {item.content}
-                                </List.Item>
-                            )}
-                        />
-                    </Col>
-
-                </Row>
-            </div>
-        );
+    state = {
+        listData: []
     }
-}
 
-class SearchInput extends Component {
+    componentDidMount() {
+        axios.ajax({
+            url: `/article`,
+            method: "GET"
+        }, this).then(res => {
+            this.setState({
+                listData: res.data
+            })
+        })
+    }
 
     //进行搜索
     search = (value) => {
-        console.log(value);
+        axios.ajax({
+            url: `/article/search`,
+            method: "POST",
+            data: {
+                title: value,
+                simplecontent: value
+            }
+        }, this).then(res => {
+            this.setState({
+                listData: res.data
+            })
+        })
     }
 
     render() {
         return (
-            <Search
-                placeholder="请搜索..."
-                onSearch={this.search}
-                enterButton="搜索"
-                size="large"
-            />
+            <Home>
+                <div className="container">
+                    <Row>
+                        <Col span={12} offset={6}>
+                            <Search
+                                placeholder="请搜索..."
+                                onSearch={this.search}
+                                enterButton="搜索"
+                                size="large"
+                            />
+                        </Col>
+                    </Row>
+                    <Row style={{ marginTop: 50 }}>
+                        <Col span={16} offset={4}>
+                            <List
+                                loading={this.state.loading}
+                                bordered
+                                locale={{ emptyText: "暂无数据" }}
+                                itemLayout="vertical"
+                                size="large"
+                                dataSource={this.state.listData}
+                                pagination={{
+                                    onChange: (page) => {
+                                        console.log(page);
+                                    },
+                                    pageSize: 10,
+                                }}
+                                renderItem={item => (
+                                    <List.Item
+                                        key={item.title}
+                                    >
+                                        <List.Item.Meta
+                                            title={<Link target="_blank" to={"/article/" + item.id}>{item.title}</Link>}
+                                        />
+                                        <Paragraph ellipsis={{ rows: 2}}>
+                                            {item.simplecontent}
+                                        </Paragraph>
+                                    </List.Item>
+                                )}
+                            />
+                        </Col>
+                    </Row>
+                </div>
+            </Home>
         );
     }
 }
-
 export default Index;

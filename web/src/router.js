@@ -19,7 +19,8 @@ class Router extends Component {
                         <Route path="/login" component={Login} />
                         <Route path="/index" component={Home} />
                         <Route path="/search" component={Search} />
-                        <Route path="/article" component={Article} />
+                        <Route path="/article/:id" component={Article} />
+                        <Route path="/richtext/:id" component={RichText} />
                         <Route path="/richtext" component={RichText} />
                         <Route component={NoMatch}></Route>
                     </Switch>

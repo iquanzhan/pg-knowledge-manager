@@ -1,7 +1,10 @@
 import JsonP from 'jsonp';
 import axios from "axios";
 import { Modal } from 'antd';
-export default class Axios {
+
+const baseUrl = "http://api.chengxiaoxiao.com";
+
+export default class {
     static jsonp(options) {
         return new Promise((resolve, reject) => {
             JsonP(options.url, {
@@ -16,26 +19,21 @@ export default class Axios {
         });
     }
 
-    static ajax(options) {
-        let loading;
-        if (options.data && options.data.isShowLoading !== false) {
-            loading = document.getElementById("ajaxLoading");
-            loading.style.display = 'block';
-        }
-
-        let baseUrl = "https://easy-mock.com/mock/5c17a07740c07229aa2e6022/api";
-
+    static ajax(options, that) {
+        that.setState({
+            loading: true
+        })
         return new Promise((resolve, reject) => {
+
             axios({
-                url: options.url,
-                method: 'get',
                 baseURL: baseUrl,
                 timeout: 5000,
-                params: (options.data && options.data.params) || ''
+                ...options
             }).then((response) => {
-                if (loading) {
-                    loading.style.display = 'none';
-                }
+
+                that.setState({
+                    loading: false
+                })
                 if (response.status === 200) {
                     let res = response.data;
                     if (res.code === 0) {
